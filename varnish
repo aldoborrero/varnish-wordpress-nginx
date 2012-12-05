@@ -1,0 +1,12 @@
+# Configuration file for varnish
+
+START=yes
+NFILES=131072
+MEMLOCK=82000
+
+DAEMON_OPTS="-a 0.0.0.0:80 \
+             -T localhost:6082 \
+             -u varnish -g varnish \
+             -f /etc/varnish/default.vcl \
+             -S /etc/varnish/secret \
+             -s file,/var/lib/varnish/$INSTANCE/varnish_storage.bin,1G"
